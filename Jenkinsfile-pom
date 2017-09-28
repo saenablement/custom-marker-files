@@ -1,0 +1,30 @@
+pipeline {
+	agent any
+
+	options { 
+    	buildDiscarder(logRotator(numToKeepStr: '5')) 
+  	}
+
+	stages {
+		stage('Build') {
+			steps {
+				sh 'mvn clean package'
+			}
+		}
+		stage('Test') {
+			steps {
+				echo 'Test our code'
+			}
+		}
+		stage('Archive') {
+			steps {
+				echo 'Archive our artifacts'
+			}
+		}
+		stage('Deploy') {
+			steps {
+				echo 'Deploy our application'
+			}
+		}
+	}
+}
