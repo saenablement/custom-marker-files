@@ -1,5 +1,5 @@
 pipeline {
-	agent { label 'jdk8' }
+	agent { label 'jdk9' }
 
 	options { 
     	buildDiscarder(logRotator(numToKeepStr: '5')) 
@@ -8,7 +8,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-			    container('maven9') {
+			    container('maven8') {
 				sh 'mvn clean package'
 			    }
 			}
